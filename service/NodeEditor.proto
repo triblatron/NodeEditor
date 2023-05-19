@@ -1,0 +1,147 @@
+enum Result
+{
+    RESULT_OK=0;
+    RESULT_INVALID_OPERATION=1;
+    RESULT_INVALID_ARGUMENT=2;
+    RESULT_NODE_NOT_FOUND=3;
+    RESULT_PORT_NOT_FOUND=4;
+    RESULT_SIGNAL_PATH_NOT_FOUND=5;
+    RESULT_TEMPLATE_NOT_FOUND=6;
+}
+
+message TemplateID
+{
+    fixed32 id = 1;
+}
+
+message CreateNodeRequest
+{
+    TemplateID templateID = 1;
+}
+
+message NodeID
+{
+    fixed32 id = 1;
+}
+
+message PortID
+{
+    fixed32 id = 1;
+}
+
+message CreateNodeResponse
+{
+    Result result = 1;
+    NodeID nodeID = 2;
+}
+
+message DeleteNodeRequest
+{
+    NodeID nodeID = 1;
+}
+
+message AddChildRequest
+{
+    NodeID parentID = 1;
+    NodeID childID = 2;
+}
+
+message AddChildResponse
+{
+    Result result = 1;
+}
+
+message RemoveChildRequest
+{
+    NodeID parentID = 1;
+    NodeID childID = 2;
+}
+
+message RemoveChildResponse
+{
+    Result result;
+}
+
+message DeleteNodeResponse
+{
+    Result result = 1;
+}
+
+enum PortDirection
+{
+    DIR_NONE = 0;
+    DIR_INPUT = 1;
+    DIR_OUTPUT = 2;
+}
+
+enum DataType
+{
+    TYPE_UNKNOWN = 0;
+    TYPE_fixed32 = 1;
+    TYPE_DOUBLE = 2;
+    TYPE_STRING = 3;
+}
+
+message AddPortRequest
+{
+    NodeID nodeID = 1;
+    PortDirection dir = 2;
+    DataType type = 3;
+}
+
+message AddPortResponse
+{
+    Result result;
+    PortID portID;
+}
+
+message RemovePortRequest
+{
+    NodeID nodeID = 1;
+    PortID portID = 2;
+}
+
+message RemovePortResponse
+{
+    Result result = 1;
+}
+
+message SignalPathID
+{
+    NodeID srcNodeID = 1;
+    PortID srcPortID = 2;
+    NodeID dstNodeID = 3;
+    PortID dstPortID = 4;
+}
+
+message CreateSignalPathRequest
+{
+    SignalPathID id = 1; 
+}
+
+message CreateSignalPathResponse
+{
+    Result result = 1;
+}
+
+message DeleteSignalPathRequest
+{
+    SignalPathID id = 1;
+}
+
+message DeleteSignalPathResponse
+{
+    Result result = 1;
+}
+
+service NodeEditor
+{
+    rpc createNode(CreateNodeRequest) returns (CreateNodeResponse) {}
+    rpc deleteNode(DeleteNodeRequest) returns (DeleteNodeResponse) {}
+    rpc addChild(AddChildRequest) returns (AddChildResponse) {}
+    rpc removeChild(RemoveChildRequest) returns (RemoveChildResponse) {}
+    rpc addPort(AddPortRequest) returns (AddPortResponse) {}
+    rpc removePort(RemovePortRequest) returns (RemovePortResponse) {}
+    rpc createSignalPath(CreateSignalPathRequest) returns (CreateSignalPathResponse) {}
+    rpc deleteSignalPath(DeleteSignalPathRequest) returns (DeleteSignalPathResponse) {}
+}
