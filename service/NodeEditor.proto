@@ -9,6 +9,10 @@ enum Result
     RESULT_PORT_NOT_FOUND=4;
     RESULT_SIGNAL_PATH_NOT_FOUND=5;
     RESULT_TEMPLATE_NOT_FOUND=6;
+    // A value was not in the allowed range of values.
+    RESULT_OUT_OF_RANGE=7;
+    // A value was not in the set of allowed values.
+    RESULT_ALLOWED=8;
 }
 
 message TemplateID
@@ -114,6 +118,18 @@ message DescribeNodeResponse
     repeated Port inputs = 1;
     repeated Port outputs = 2;
     repeated Setting settings = 3;
+}
+
+message ValidationRequest
+{
+    NodeID nodeID;
+    PortID portID;
+    Value input;
+}
+
+message ValidationResponse
+{
+    Result result;
 }
 
 message DeleteNodeRequest
