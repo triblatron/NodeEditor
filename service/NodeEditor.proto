@@ -56,6 +56,7 @@ enum DataType
     TYPE_INT = 1;
     TYPE_DOUBLE = 2;
     TYPE_STRING = 3;
+    TYPE_BOOL = 4;
 }
 
 message Value
