@@ -17,6 +17,7 @@ message TemplateID
 message CreateNodeRequest
 {
     TemplateID templateID = 1;
+    NodeID parentID = 2;
 }
 
 message NodeID
