@@ -43,22 +43,37 @@ message DeacribeNodeRequest
     NodeID nodeID = 1;
 }
 
+message Value
+{
+    oneof v
+    {
+        int i = 1;
+        double d = 2;
+        string s = 3;
+        bool b = 4;
+    }
+}
+
 message Port
 {
     string name = 1;
     DataType type = 2;
     Direction dir = 3;
+    Value value = 4;
 }
 
 message Setting
 {
     string name = 1;
-    DataType type;
+    DataType type = 2;
+    Value value = 3;
 }
 
 message DescribeNodeResponse
 {
-    
+    repeated Port inputs = 1;
+    repeated Port outputs = 2;
+    repeated Setting settings = 3;
 }
 
 message DeleteNodeRequest
