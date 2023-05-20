@@ -12,7 +12,7 @@ enum Result
     // A value was not in the allowed range of values.
     RESULT_OUT_OF_RANGE=7;
     // A value was not in the set of allowed values.
-    RESULT_ALLOWED=8;
+    RESULT_NOT_ALLOWED=8;
 }
 
 message TemplateID
