@@ -90,7 +90,7 @@ message Validation
     oneof allowed
     {
         Range range = 1;
-        ValueSet set = 2,
+        ValueSet set = 2;
     }
 }
 
