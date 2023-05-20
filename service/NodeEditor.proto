@@ -69,6 +69,12 @@ message Value
     }
 }
 
+message Range
+{
+    Value min = 1;
+    Value max = 2;
+}
+
 message ValueSet
 {
     repeated Value member;
