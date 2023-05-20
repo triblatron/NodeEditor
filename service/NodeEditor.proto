@@ -43,6 +43,21 @@ message DeacribeNodeRequest
     NodeID nodeID = 1;
 }
 
+enum Direction
+{
+    DIR_UNKNOWN = 0;
+    DIR_IN = 1;
+    DIR_OUT = 2;
+}
+
+enum DataType
+{
+    TYPE_UNKNOWN = 0;
+    TYPE_fixed32 = 1;
+    TYPE_DOUBLE = 2;
+    TYPE_STRING = 3;
+}
+
 message Value
 {
     oneof v
@@ -56,17 +71,19 @@ message Value
 
 message Port
 {
-    string name = 1;
-    DataType type = 2;
-    Direction dir = 3;
-    Value value = 4;
+    PortID id = 1;
+    string name = 2;
+    DataType type = 3;
+    Direction dir = 4;
+    Value value = 5;
 }
 
 message Setting
 {
-    string name = 1;
-    DataType type = 2;
-    Value value = 3;
+    PortID id = 1;
+    string name = 2;
+    DataType type = 3;
+    Value value = 4;
 }
 
 message DescribeNodeResponse
@@ -113,14 +130,6 @@ enum PortDirection
     DIR_NONE = 0;
     DIR_INPUT = 1;
     DIR_OUTPUT = 2;
-}
-
-enum DataType
-{
-    TYPE_UNKNOWN = 0;
-    TYPE_fixed32 = 1;
-    TYPE_DOUBLE = 2;
-    TYPE_STRING = 3;
 }
 
 message AddPortRequest
