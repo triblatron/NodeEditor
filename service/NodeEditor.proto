@@ -67,7 +67,7 @@ message Value
 {
     oneof v
     {
-        int i = 1;
+        fixed32 i = 1;
         double d = 2;
         string s = 3;
         bool b = 4;
@@ -82,7 +82,7 @@ message Range
 
 message ValueSet
 {
-    repeated Value member;
+    repeated Value member = 1;
 }
 
 message Validation
@@ -122,14 +122,14 @@ message DescribeNodeResponse
 
 message ValidationRequest
 {
-    NodeID nodeID;
-    PortID portID;
-    Value input;
+    NodeID nodeID = 1;
+    PortID portID = 2;
+    Value input = 3;
 }
 
 message ValidationResponse
 {
-    Result result;
+    Result result = 1;
 }
 
 message DeleteNodeRequest
@@ -156,7 +156,7 @@ message RemoveChildRequest
 
 message RemoveChildResponse
 {
-    Result result;
+    Result result = 1;
 }
 
 message DeleteNodeResponse
@@ -180,8 +180,8 @@ message AddPortRequest
 
 message AddPortResponse
 {
-    Result result;
-    PortID portID;
+    Result result = 1;
+    PortID portID = 2;
 }
 
 message RemovePortRequest
@@ -225,12 +225,12 @@ message DeleteSignalPathResponse
 
 service NodeEditor
 {
-    rpc createNode(CreateNodeRequest) returns (CreateNodeResponse) {}
-    rpc deleteNode(DeleteNodeRequest) returns (DeleteNodeResponse) {}
-    rpc addChild(AddChildRequest) returns (AddChildResponse) {}
-    rpc removeChild(RemoveChildRequest) returns (RemoveChildResponse) {}
-    rpc addPort(AddPortRequest) returns (AddPortResponse) {}
-    rpc removePort(RemovePortRequest) returns (RemovePortResponse) {}
-    rpc createSignalPath(CreateSignalPathRequest) returns (CreateSignalPathResponse) {}
-    rpc deleteSignalPath(DeleteSignalPathRequest) returns (DeleteSignalPathResponse) {}
+    rpc createNode(CreateNodeRequest) returns (CreateNodeResponse);
+    rpc deleteNode(DeleteNodeRequest) returns (DeleteNodeResponse);
+    rpc addChild(AddChildRequest) returns (AddChildResponse);
+    rpc removeChild(RemoveChildRequest) returns (RemoveChildResponse);
+    rpc addPort(AddPortRequest) returns (AddPortResponse);
+    rpc removePort(RemovePortRequest) returns (RemovePortResponse);
+    rpc createSignalPath(CreateSignalPathRequest) returns (CreateSignalPathResponse);
+    rpc deleteSignalPath(DeleteSignalPathRequest) returns (DeleteSignalPathResponse);
 }
