@@ -4,7 +4,7 @@ The aim is to have a consistent experience across mobile, desktop and web, altho
 
 ## Dependencies
 * Dart SDK
-* Flutter SDK
+* Flutter SDK ( includes the Dart SDK )
 * gRPC
 * googletest
 * A C++ 17 compiler:
