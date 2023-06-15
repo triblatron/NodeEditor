@@ -79,5 +79,5 @@ class NodeView {
   }
 
   NodeID _nodeID;
-  List<PortView> _ports;
+  final List<PortView> _ports;
 }

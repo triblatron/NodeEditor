@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:arrow_path/arrow_path.dart';
 
 void main() {
   runApp(const MyApp());
@@ -8,14 +9,26 @@ class _Wire extends CustomPainter {
   final _MyHomePageState _state;
   _Wire(_MyHomePageState state) 
   :
-  _state = state
+  _state = state  
   {
     // Do nothing.
   }
   @override
   void paint(Canvas canvas, Size size) {
     if (_state._wireOn==true) {
-      canvas.drawLine(Offset(_state._initX,_state._initY), Offset(_state._x,_state._y), Paint()..color=Colors.black);
+          /// The arrows usually looks better with rounded caps.
+    final Paint paint = Paint()
+      ..color = Colors.black
+      ..style = PaintingStyle.stroke
+      ..strokeCap = StrokeCap.round
+      ..strokeJoin = StrokeJoin.round
+      ..strokeWidth = 3.0;
+      Path path = Path();
+      path.moveTo(_state._initX, _state._initY);
+      path.relativeLineTo(_state._x-_state._initX, _state._y-_state._initY);
+      path = ArrowPath.addTip(path);
+      canvas.drawPath(path, paint..color=Colors.black);
+      // canvas.drawLine(Offset(_state._initX,_state._initY), Offset(_state._x,_state._y), Paint()..color=Colors.black);
     }
   }
 
