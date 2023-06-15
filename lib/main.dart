@@ -22,7 +22,7 @@ class _Wire extends CustomPainter {
       ..style = PaintingStyle.stroke
       ..strokeCap = StrokeCap.round
       ..strokeJoin = StrokeJoin.round
-      ..strokeWidth = 3.0;
+      ..strokeWidth = 1.0;
       Path path = Path();
       path.moveTo(_state._initX, _state._initY);
       path.relativeLineTo(_state._x-_state._initX, _state._y-_state._initY);
