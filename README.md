@@ -4,7 +4,7 @@ The aim is to have a consistent experience across mobile, desktop and web, altho
 There is the possibility to support multiple node types such as UML classes using plugins.
 
 # Task list
-* Get basic funcionality working:
+* Basic funcionality
   * Build a model of a graph using abstract shapes such as boxes, paths, ports, lebels and groups
   * Build a widget tree in the chosen front-end toolkit
   * Generate protocol in response to user actions in the editor
